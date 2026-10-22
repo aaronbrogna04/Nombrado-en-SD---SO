@@ -1,0 +1,8 @@
+@OrdersService_HostAddress = http://localhost:5216
+
+# Consulta el stock de P001 en InventoryService usando el nombre lógico "inventory-service".
+# Fuera de Docker devuelve 503 (el nombre no resuelve); dentro de Docker Compose devuelve el JSON del inventario.
+GET {{OrdersService_HostAddress}}/api/orders/check-stock
+Accept: application/json
+
+###

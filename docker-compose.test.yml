@@ -1,0 +1,4 @@
+# Override solo para pruebas: publica orders-service en el host sin tocar docker-compose.yml.
+services:
+  orders-service:
+    ports: ["5000:8080"]
