@@ -1,5 +1,0 @@
-# Ejercicio 7 — IP directa vs. nombre lógico
-
-**IP directa** (ej. `http://172.18.0.5:8080/api/inventory/P001`): la dirección IP de un contenedor no es estable; si el contenedor de InventoryService se detiene, se recrea o se escala, Docker puede asignarle otra IP (por ejemplo, pasar de `172.18.0.5` a `172.18.0.9`). En ese momento la IP que tiene el cliente queda obsoleta, las llamadas fallan y hay que modificar la configuración o el código de OrdersService y volver a desplegarlo. El cliente queda acoplado a la ubicación física del servicio.
-
-**Nombre lógico** (`http://inventory-service:8080/api/inventory/P001`): el cliente sólo conoce el nombre del servicio y es el DNS interno de Docker el que lo traduce, en cada consulta, a la IP actual del contenedor. El nombre es estable aunque la IP cambie, así que no hay que tocar ni redeployar el cliente. Esto brinda **transparencia de ubicación**: OrdersService no necesita saber dónde corre InventoryService, sólo cómo se llama. (Por eso el nombre sólo resuelve dentro de la red de Docker; se prueba en el Ejercicio 9 con Docker Compose.)
